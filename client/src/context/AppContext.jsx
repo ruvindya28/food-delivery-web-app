@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 
 export const AppContext = createContext();
@@ -19,12 +20,26 @@ export const AppContextProvider = ({children})=>{
           setProducts(dummyProducts);
     }
 
+    const addToCart =()=>{
+        let cartData = structuredClone(cartItems);
+
+        if(
+            cartData[itemId]){
+                cartData[itemId] +=1;
+            }
+        else{
+             cartData[itemId] = 1;
+        }
+        setCartItems(cartData);
+        toast.success("Added to Cart");
+    }
+
     useEffect(() => {
         fetchProducts();
     }, []);
 
 
-    const value = {navigate,user,setUser,isSeller,setIsSeller,showUserLogin,setShowUserLogin,products,currency};
+    const value = {navigate,user,setUser,isSeller,setIsSeller,showUserLogin,setShowUserLogin,products,currency,addToCart};
     return <AppContext.Provider value={value}>
         {children}
         </AppContext.Provider>
