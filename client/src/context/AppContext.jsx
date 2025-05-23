@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { dummyProducts } from "../assets/assets";
+
 
 
 export const AppContext = createContext();
@@ -34,12 +36,36 @@ export const AppContextProvider = ({children})=>{
         toast.success("Added to Cart");
     }
 
+    //update product from cart
+
+    const updateCartItem =(itemsId,quantity)=>{
+        let cartData = structuredClone(cartItems);
+        cartData[itemsId] = quantity;
+        setCartItems(cartData);
+        toast.success("Cart Updated");
+    }
+
+    //remove product from cart
+
+    const removeCartItem=(itemId)=>{
+        let cartData = structuredClone(cartItems);
+        if(cartData[itemId]){
+            cartData[itemId] -= 1;
+            if(cartData[itemId] === 0){
+                delete cartData[itemId];
+            }
+        }
+        
+        toast.success("Removed from Cart");
+        setCartItems(cartData);
+    }
+
     useEffect(() => {
         fetchProducts();
     }, []);
 
 
-    const value = {navigate,user,setUser,isSeller,setIsSeller,showUserLogin,setShowUserLogin,products,currency,addToCart};
+    const value = {navigate,user,setUser,isSeller,setIsSeller,showUserLogin,setShowUserLogin,products,currency,addToCart,updateCartItem,removeCartItem,cartItems};
     return <AppContext.Provider value={value}>
         {children}
         </AppContext.Provider>

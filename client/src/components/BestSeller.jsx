@@ -8,10 +8,10 @@ const BestSeller = () => {
   return (
     <div className='mt-16'>
       <p className='text-2xl md:text-3xl font-medium'>Best Sellers</p>
-      <div className='flex gap-4 flex-wrap'>
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+      <div>
+        
+          <ProductCard product={products[0]} />
+        
       </div>
     </div>
   );
