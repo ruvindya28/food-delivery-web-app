@@ -16,6 +16,7 @@ const AllProducts = () => {
             }
         
     },[products,searchQuery])
+    
   return (
     <div className='mt-16 flex flex-col'>
         <div className='flex flex-col items-end w-max'>
