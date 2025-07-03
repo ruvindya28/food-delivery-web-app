@@ -7,15 +7,18 @@ const AllProducts = () => {
     const {products,searchQuery} = useAppContext();
     const [filteredProducts, setFilteredProducts] = useState([]);
 
-    useEffect(()=>{
-            if(searchQuery.length > 0) {
-                setFilteredProducts(products.filter(product => product.title.toLowerCase().includes(searchQuery.toLowerCase())
-            ))}
-            else{
-                setFilteredProducts(products);
-            }
-        
-    },[products,searchQuery])
+   useEffect(() => {
+    if (products) {
+        if (searchQuery.length > 0) {
+            setFilteredProducts(products.filter(product =>
+                product.title.toLowerCase().includes(searchQuery.toLowerCase())
+            ));
+        } else {
+            setFilteredProducts(products);
+        }
+    }
+}, [products, searchQuery]);
+
     
   return (
     <div className='mt-16 flex flex-col'>
