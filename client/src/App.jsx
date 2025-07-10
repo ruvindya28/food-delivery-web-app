@@ -11,6 +11,7 @@ import ProductCategory from './pages/productCategory'
 import ProductDetails from './pages/ProductDetails'
 
 
+
 const App = () => {
 
   const isSellerPath = useLocation().pathname.includes('seller');
