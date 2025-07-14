@@ -37,7 +37,8 @@ const AddAddress = () => {
         setAddress((prevAddress) => ({
             ...prevAddress,
             [name]: value
-        }));
+        }))
+        console.log(address);
     };
 
     const onSubmitHandler = async (e) => {
