@@ -25,12 +25,12 @@ const SellerLogin = () => {
                 <span className='text-primary'>Seller</span> Login</p>
                 <div className='w-full'>
                     <p>Email</p>
-                    <input type="email" placeholder='Enter your email'
+                    <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Enter your email'
                     className='border border-gray-200 rounded w-full p-2 mt-1 outline-primary' required />
                 </div>
             <div className='w-full'>
                 <p>Password</p>
-                <input type="password" placeholder='Enter your password'
+                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Enter your password'
                 className='border border-gray-200 rounded w-full p-2 mt-1 outline-primary' required />
             </div>
             <button type='submit' className='bg-primary text-white py-2 w-full rounded-md'>Login</button>
