@@ -36,15 +36,16 @@ const AddProduct = () => {
                 </div>
                 <div className="flex flex-col gap-1 max-w-md">
                     <label className="text-base font-medium" htmlFor="product-name">Product Name</label>
-                    <input id="product-name" type="text" placeholder="Type here" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
+                    <input onChange={(e) => setName(e.target.value)} value={name}
+                     id="product-name" type="text" placeholder="Type here" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
                 </div>
                 <div className="flex flex-col gap-1 max-w-md">
                     <label className="text-base font-medium" htmlFor="product-description">Product Description</label>
-                    <textarea id="product-description" rows={4} className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 resize-none" placeholder="Type here"></textarea>
+                    <textarea onChange={(e) => setDescription(e.target.value)} value={description} id="product-description" rows={4} className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 resize-none" placeholder="Type here"></textarea>
                 </div>
                 <div className="w-full flex flex-col gap-1">
                     <label className="text-base font-medium" htmlFor="category">Category</label>
-                    <select id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40">
+                    <select onChange={(e) => setCategory(e.target.value)} value={category} id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40">
                         <option value="">Select Category</option>
                         {[{ name: 'Electronics' }, { name: 'Clothing' }, { name: 'Accessories' }].map((item, index) => (
                             <option key={index} value={item.name}>{item.name}</option>
@@ -54,11 +55,11 @@ const AddProduct = () => {
                 <div className="flex items-center gap-5 flex-wrap">
                     <div className="flex-1 flex flex-col gap-1 w-32">
                         <label className="text-base font-medium" htmlFor="product-price">Product Price</label>
-                        <input id="product-price" type="number" placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
+                        <input onChange={(e) => setPrice(e.target.value)} value={price} id="product-price" type="number" placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
                     </div>
                     <div className="flex-1 flex flex-col gap-1 w-32">
                         <label className="text-base font-medium" htmlFor="offer-price">Offer Price</label>
-                        <input id="offer-price" type="number" placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
+                        <input onChange={(e) => setOfferPrice(e.target.value)} value={offerPrice} id="offer-price" type="number" placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
                     </div>
                 </div>
                 <button className="px-8 py-2.5 bg-primary text-white font-medium rounded">ADD</button>
