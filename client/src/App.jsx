@@ -4,7 +4,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import { Toaster } from 'react-hot-toast'
 import Footer from './components/Footer'
-import { useAppContext } from './context/AppContext'
+import { useAppContext } from './context/appContext'
 import Login from './components/Login'
 import AllProducts from './pages/AllProducts'
 import ProductCategory from './pages/productCategory'
@@ -43,7 +43,7 @@ const App = () => {
         <Route path='/seller' element={isSeller ? <SellerLayout/> : <SellerLogin/>}>
           <Route index element={isSeller ? <AddProduct/> : null} />
           <Route path='product-list' element={<ProductList/>} />
-          <Route path='orders' element={<Orders/>} />
+          <Route path='/seller/orders' element={<Orders/>} />
         </Route>
       </Routes>
 
