@@ -54,7 +54,7 @@ export const register = async (req, res) => {
 
 //user login : /api/user/login
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
     try{
        const{ email, password } = req.body;
 
@@ -95,6 +95,11 @@ const login = async (req, res) => {
         });
 
     } catch(error) {
-
+        console.log(error.message);
+        return res.json({
+            success: false,
+            message: error.message
+        });
     }
+
 }
