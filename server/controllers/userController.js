@@ -51,3 +51,50 @@ export const register = async (req, res) => {
         });
     }
 }
+
+//user login : /api/user/login
+
+const login = async (req, res) => {
+    try{
+       const{ email, password } = req.body;
+
+       if(!email || !password) {
+            return res.json({success: false, message: 'Email and Password are required' });
+        }
+
+         const user = await User.findOne({ email });
+
+         if(!user) {
+            return res.json({success: false, message: 'Invalid email or password' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if(!isMatch) {
+            return res.json({success: false, message: 'Invalid email or password' });
+
+        }
+        
+        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, { expiresIn: '7d' });
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+
+        });
+
+        return res.json({
+            success: true,
+            message: 'User registered successfully',
+            user: {
+                name: user.name,
+                email: user.email
+            }
+        });
+
+    } catch(error) {
+
+    }
+}
