@@ -1,4 +1,4 @@
-
+import Product from '../models/Product.js';
 //add products : /api/product/add
 export const addProduct = async (req, res) => {
      
@@ -10,7 +10,7 @@ export const addProduct = async (req, res) => {
 //get products : /api/product/list
 export const productList = async (req, res) => {
      
-
+ 
 }
 
 
