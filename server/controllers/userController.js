@@ -89,7 +89,7 @@ export const login = async (req, res) => {
 
         return res.json({
             success: true,
-            message: 'User registered successfully',
+            message: 'User logged in successfully',
             user: {
                 name: user.name,
                 email: user.email
@@ -108,22 +108,21 @@ export const login = async (req, res) => {
 
 //check auth : /api/user/is-auth
 
-export const isAuth = async (req, res) => {
+export const isAuth = async (req,res) => {
       try{
-        const {userId} = req.body;
-        const user = await User.findById(userId).select('-password');
+        //const { userId } = req.body;
+        const user = await User.findById(req.userId).select('-password');
         return res.json({
             success: true,
             user
         });
       }catch(error) {
         console.log(error.message);
-        return res.json({
+        res.json({
             success: false,
             message: error.message
         });
       }
-
 
 }
 
