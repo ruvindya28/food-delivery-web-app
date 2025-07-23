@@ -42,7 +42,7 @@ export const productList = async (req, res) => {
             const products = await Product.find({});
             res.json({
                  success: true,
-                 products: products
+                 products
             });
      }catch(error){
         console.log(error.message);
@@ -57,7 +57,20 @@ export const productList = async (req, res) => {
 
 //get single products : /api/product/id
 export const productById = async (req, res) => {
-     
+     try{
+        const { id } = req.body;
+        const product = await Product.findById(id);
+        res.json({
+                 success: true,
+                 product
+            });
+     }catch(error){
+        console.log(error.message);
+        res.json({
+            success: false,
+            message: error.message
+        });
+     }
 
 }
 
