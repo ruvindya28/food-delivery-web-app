@@ -1,4 +1,4 @@
-import express from 'express';
+
 import User from '../models/User.js';
 
 //update user cartData :/api/cart/update
