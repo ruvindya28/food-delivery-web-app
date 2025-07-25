@@ -1,5 +1,5 @@
-import Order from "../models/Order";
-import Product from "../models/Product";
+import Order from "../models/Order.js";
+import Product from "../models/Product.js";
 
 //place order COD :/api/order/cod
 
