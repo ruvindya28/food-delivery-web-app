@@ -68,7 +68,7 @@ export const placeOrderCOD = async (req, res) => {
 
 export const getAllOrders = async (req, res) => {
     try{
-        const orders = await Order.find({}).populate("items.product address")
+        const orders = await Order.find({}).populate("items.product address").sort({ createdAt: -1 });
         res.json({
             success: true,
             orders
