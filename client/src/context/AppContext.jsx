@@ -2,7 +2,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { dummyProducts } from "../assets/assets";
+import axios from "axios";
 
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 
 export const AppContext = createContext();
@@ -91,7 +94,8 @@ export const AppContextProvider = ({children})=>{
     }, []);
 
 
-    const value = {navigate,user,setUser,isSeller,setIsSeller,showUserLogin,setShowUserLogin,products,currency,addToCart,updateCartItem,removeCartItem,cartItems,searchQuery,setSearchQuery,getCartCount,getCartTotal};
+    const value = {navigate,user,setUser,isSeller,setIsSeller,showUserLogin,setShowUserLogin,products,currency,addToCart,updateCartItem,removeCartItem,cartItems,searchQuery,setSearchQuery,getCartCount,getCartTotal,axios};
+    
     return <AppContext.Provider value={value}>
         {children}
         </AppContext.Provider>
