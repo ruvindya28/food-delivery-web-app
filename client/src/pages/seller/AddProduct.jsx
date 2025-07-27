@@ -35,9 +35,17 @@ const AddProduct = () => {
             const { data } =await axios.post('/api/product/add', formData);
             if(data.success){
                 toast.success(data.message);
-                navigate('/seller/product-list');
+                setName('');
+                setDescription('');
+                setCategory('');
+                setPrice('');
+                setOfferPrice('');
+                setFiles([]);
+            }else{
+                toast.error(data.message);
             }
-        }catch{
+        }catch(error){
+            toast.error(error.message);
 
         }
         
