@@ -1,18 +1,23 @@
-
+// controllers/cartController.js
 import User from '../models/User.js';
 
-//update user cartData :/api/cart/update
-
 export const updateCart = async (req, res) => {
-    try{
+    try {
+        const { cartItems } = req.body;
+        const userId = req.userId; // from middleware
 
-          const { userId, cartItems } = req.body;
-          await User.findByIdAndUpdate(userId, { cartItems })
-          res.json({ success: true, message: 'Cart updated successfully' });
-    
-    }catch(error){
-        console.log(error.message)
-       res.json({ success: false, message: error.message });
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { cartItems },
+            { new: true } 
+        );
+
+        if (!user) {
+            return res.json({ success: false, message: "User not found" });
+        }
+
+        res.json({ success: true, message: 'Cart updated successfully', cartItems: user.cartItems });
+    } catch (error) {
+        res.json({ success: false, message: error.message });
     }
-
 };
