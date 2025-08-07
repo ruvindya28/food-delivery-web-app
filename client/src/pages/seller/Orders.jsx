@@ -8,7 +8,11 @@ const Orders = () => {
 
     const fetchOrders = async () => {
         // Fetch orders from API and set state
-        setOrders(dummyOrders);
+      try{
+
+      }catch(error){
+        
+      }
     };
 
     useEffect(() => {
