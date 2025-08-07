@@ -48,7 +48,8 @@ export const placeOrderCOD = async (req, res) => {
     //place order Strpe :/api/order/stripe
    export const placeOrderStripe = async (req, res) => {
      try {
-         const { userId, items, address } = req.body;
+         const  { items, address } = req.body;
+         const userId = req.userId;
          const {origin} = req.headers;
 
          if(!address || items.lenght ===0){
