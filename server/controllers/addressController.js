@@ -4,7 +4,8 @@ import Address from "../models/Address.js";
 //add address : /api/address/add
 export const addAddress = async (req, res) => {
     try{
-         const { address,userId } = req.body;
+         const { address} = req.body;
+         const  userId  = req.userId;
          await Address.create({
             userId,
             ...address
@@ -27,10 +28,10 @@ export const addAddress = async (req, res) => {
 //get address: /api/address/get/
 
 export const getAddress = async (req, res) => {
-
     try {
-        const { userId } = req.body;
+        const userId = req.userId; // ✅ use the authenticated user ID
         const addresses = await Address.find({ userId });
+
         res.json({
             success: true,
             addresses
