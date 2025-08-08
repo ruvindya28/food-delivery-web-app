@@ -28,7 +28,7 @@ export const loginSeller = async (req, res) => {
     }
 
 
-    }catch{
+    }catch(error) {
         console.log(error.message);
         return res.json({
             success: false,
