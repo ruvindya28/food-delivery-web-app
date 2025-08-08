@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { dummyProducts } from "../assets/assets";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
